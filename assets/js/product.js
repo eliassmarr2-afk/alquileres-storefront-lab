@@ -12,6 +12,9 @@
 
   const monthLabel = document.querySelector('[data-month-label]');
   const calendarGrid = document.querySelector('[data-calendar-grid]');
+  const calendarToggle = document.querySelector('[data-calendar-toggle]');
+  const calendarShell = document.querySelector('[data-calendar-shell]');
+  const dateTriggerCopy = document.querySelector('[data-date-trigger-copy]');
   const availability = document.querySelector('[data-availability]');
   const selectedDate = document.querySelector('[data-selected-date]');
   const summaryStatus = document.querySelector('[data-summary-status]');
@@ -23,6 +26,9 @@
   const secondDateSelection = document.querySelector('[data-second-date-selection]');
   const secondDateCopy = document.querySelector('[data-second-date-copy]');
   const toast = document.querySelector('[data-toast]');
+  const galleryTrack = document.querySelector('[data-gallery-track]');
+  const gallerySlides = [...document.querySelectorAll('[data-gallery-slide]')];
+  const galleryThumbs = [...document.querySelectorAll('[data-gallery-thumb]')];
 
   function startOfMonth(date) {
     return new Date(date.getFullYear(), date.getMonth(), 1);
@@ -68,6 +74,11 @@
 
   function capitalize(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  function setCalendarOpen(open) {
+    calendarShell.hidden = !open;
+    calendarToggle.setAttribute('aria-expanded', String(open));
   }
 
   function renderCalendar() {
@@ -134,20 +145,26 @@
       secondDateButton.textContent = 'Cambiar segunda fecha';
       availability.classList.add('is-available');
       availability.querySelector('span:last-child').textContent = `${capitalize(formatLongDate(date))} disponible como segunda fecha.`;
+      dateTriggerCopy.textContent = `${capitalize(formatLongDate(state.firstDate))} · segunda fecha agregada`;
+      setCalendarOpen(false);
     } else {
       state.firstDate = date;
+
       if (state.secondDate && sameDay(state.secondDate, date)) {
         state.secondDate = null;
         secondDateSelection.hidden = true;
         secondDateRow.hidden = true;
       }
+
       selectedDate.textContent = capitalize(formatLongDate(date));
+      dateTriggerCopy.textContent = capitalize(formatLongDate(date));
       summaryStatus.textContent = 'Disponible';
       summaryStatus.classList.add('is-ready');
       availability.classList.add('is-available');
       availability.querySelector('span:last-child').textContent = `${capitalize(formatLongDate(date))} disponible para reservar.`;
       rentButtons.forEach((button) => { button.disabled = false; });
       secondDateButton.disabled = false;
+      setCalendarOpen(false);
     }
 
     renderCalendar();
@@ -173,6 +190,38 @@
     }, 2600);
   }
 
+  function setActiveGalleryThumb(index) {
+    galleryThumbs.forEach((thumb, thumbIndex) => {
+      thumb.classList.toggle('is-active', thumbIndex === index);
+    });
+  }
+
+  galleryThumbs.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      const index = Number(thumb.dataset.galleryThumb);
+      const slide = gallerySlides[index];
+      if (!slide) return;
+      galleryTrack.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+      setActiveGalleryThumb(index);
+    });
+  });
+
+  let galleryScrollFrame = null;
+  galleryTrack.addEventListener('scroll', () => {
+    if (galleryScrollFrame) return;
+    galleryScrollFrame = window.requestAnimationFrame(() => {
+      const slideWidth = galleryTrack.clientWidth || 1;
+      const index = Math.max(0, Math.min(gallerySlides.length - 1, Math.round(galleryTrack.scrollLeft / slideWidth)));
+      setActiveGalleryThumb(index);
+      galleryScrollFrame = null;
+    });
+  }, { passive: true });
+
+  calendarToggle.addEventListener('click', () => {
+    const open = calendarToggle.getAttribute('aria-expanded') !== 'true';
+    setCalendarOpen(open);
+  });
+
   document.querySelector('[data-prev-month]').addEventListener('click', () => {
     const previous = new Date(state.viewDate.getFullYear(), state.viewDate.getMonth() - 1, 1);
     const currentMonth = startOfMonth(new Date());
@@ -191,8 +240,10 @@
     state.selectingSecondDate = true;
     availability.classList.remove('is-available');
     availability.querySelector('span:last-child').textContent = 'Ahora elegí la segunda fecha en el calendario.';
+    dateTriggerCopy.textContent = 'Elegí una segunda fecha disponible';
+    setCalendarOpen(true);
     showToast('Elegí otra fecha disponible en el calendario.');
-    document.querySelector('[data-calendar]').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    calendarToggle.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
   document.querySelector('[data-remove-second]').addEventListener('click', () => {
@@ -201,6 +252,7 @@
     secondDateSelection.hidden = true;
     secondDateRow.hidden = true;
     secondDateButton.textContent = 'Elegir otra fecha';
+    dateTriggerCopy.textContent = state.firstDate ? capitalize(formatLongDate(state.firstDate)) : 'Elegí una fecha disponible';
     renderCalendar();
     updateTotal();
   });
@@ -240,6 +292,8 @@
     });
   });
 
+  setCalendarOpen(false);
+  setActiveGalleryThumb(0);
   renderCalendar();
   updateTotal();
 })();
