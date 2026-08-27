@@ -1,23 +1,19 @@
 :root {
-  --bg: #f3f1ed;
-  --surface: #fffefa;
-  --surface-strong: #ffffff;
-  --ink: #1f1d1a;
-  --muted: #736e68;
-  --line: #ddd8d1;
-  --line-strong: #cfc8c0;
-  --sage: #7f9274;
-  --sage-dark: #5e7255;
-  --sage-soft: #e7ece3;
-  --sand: #d8c7b4;
-  --cream: #ece2d3;
-  --terracotta: #bd8467;
-  --danger-soft: #efe4df;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f4f4f4;
+  --ink: #000000;
+  --muted: #666666;
+  --line: #e9e9e9;
+  --blue: #145cff;
+  --red: #ff3b30;
+  --yellow: #ffd60a;
+  --green: #18a957;
+  --orange: #ff7a00;
   --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
   --content: 1320px;
-  --shadow-soft: 0 10px 30px rgba(36, 30, 24, 0.05);
 }
 
 * {
@@ -32,8 +28,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -63,22 +60,20 @@ button {
   display: grid;
   place-items: center;
   padding: 7px 18px;
-  background: var(--ink);
+  background: #000;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.02em;
   text-align: center;
 }
 
 .site-header {
   width: min(calc(100% - 40px), var(--content));
-  min-height: 76px;
+  min-height: 72px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(105, 98, 90, 0.16);
 }
 
 .brand {
@@ -94,41 +89,43 @@ button {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--sage);
+  background: var(--blue);
   color: #fff;
   font-size: 14px;
 }
 
 .brand__text {
-  font-size: 17px;
-  letter-spacing: -0.02em;
+  font-size: 18px;
+  letter-spacing: -0.025em;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
   gap: 28px;
-  color: var(--muted);
+  color: #454545;
   font-size: 13px;
   font-weight: 500;
 }
 
 .site-nav a:hover {
-  color: var(--ink);
+  color: #000;
 }
 
 .header-action {
   min-height: 40px;
   padding: 0 16px;
-  border: 1px solid var(--line-strong);
+  border: 0;
   border-radius: 999px;
-  background: transparent;
+  background: var(--yellow);
+  color: #000;
+  font-weight: 700;
   cursor: pointer;
 }
 
 .button {
   min-height: 52px;
-  border-radius: 999px;
+  border-radius: 14px;
   border: 0;
   padding: 0 22px;
   display: inline-flex;
@@ -136,9 +133,9 @@ button {
   justify-content: center;
   gap: 8px;
   font-size: 14px;
-  font-weight: 650;
+  font-weight: 700;
   cursor: pointer;
-  transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+  transition: transform 140ms ease, opacity 140ms ease;
 }
 
 .button:not(:disabled):active {
@@ -147,40 +144,36 @@ button {
 
 .button:disabled {
   cursor: not-allowed;
-  opacity: 0.42;
+  opacity: 0.38;
 }
 
 .button--primary {
-  background: var(--ink);
+  background: var(--blue);
   color: #fff;
 }
 
-.button--primary:not(:disabled):hover {
-  background: #090909;
-}
-
 .button--secondary {
-  background: transparent;
-  border: 1px solid var(--line-strong);
-}
-
-.button--secondary:hover {
-  background: rgba(255, 255, 255, 0.55);
+  background: var(--yellow);
+  color: #000;
 }
 
 .button--light {
   background: #fff;
-  color: var(--ink);
+  color: #000;
 }
 
 .step-label,
 .section-kicker,
 .offer-kicker {
   display: inline-block;
-  color: var(--sage-dark);
+  color: var(--blue);
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.11em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.step-label--red {
+  color: var(--red);
 }
 
 .toast {
@@ -192,7 +185,7 @@ button {
   max-width: min(420px, calc(100vw - 32px));
   padding: 12px 16px;
   border-radius: 999px;
-  background: var(--ink);
+  background: #000;
   color: #fff;
   font-size: 13px;
   text-align: center;
@@ -217,7 +210,7 @@ button {
 
   .site-header {
     width: min(calc(100% - 28px), var(--content));
-    min-height: 64px;
+    min-height: 62px;
   }
 
   .site-nav a {
@@ -245,8 +238,8 @@ button {
     justify-content: space-between;
     gap: 16px;
     padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
-    background: rgba(255, 254, 250, 0.96);
-    border-top: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.97);
+    border-top: 1px solid #ededed;
     backdrop-filter: blur(16px);
   }
 
