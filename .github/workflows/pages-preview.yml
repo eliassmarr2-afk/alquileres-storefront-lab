@@ -1,5 +1,6 @@
 name: Deploy storefront preview to GitHub Pages
 
+# Trigger a fresh deploy after Pages was enabled manually.
 on:
   push:
     branches:
