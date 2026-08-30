@@ -1,8 +1,8 @@
 (() => {
   const catalog = {
-    'Plaza Montessori': { color: 'pink', subtitle: 'Diversión y entretenimiento asegurado', description: 'La plaza Montessori viene con una serie de juegos didácticos y entretenimiento seguro para los niños.' },
-    'Mini Cocina Creativa': { color: 'aqua', subtitle: 'Imaginar, compartir y jugar', description: 'Una cocina infantil con accesorios grandes y seguros para inventar recetas, roles y pequeñas historias entre amigos.' },
-    'Pelotero Sensorial': { color: 'blue', subtitle: 'Movimiento, color y descubrimiento', description: 'Un espacio blando con pelotas de distintos tonos y elementos suaves para estimular movimiento, coordinación y juego libre.' },
+    'Plaza Montessori': { color: 'pink', image: 'assets/images/zekere-hero.jpg', subtitle: 'Diversión y entretenimiento asegurado', description: 'La plaza Montessori viene con una serie de juegos didácticos y entretenimiento seguro para los niños.' },
+    'Mini Cocina Creativa': { color: 'aqua', image: 'assets/images/file_0000000015bc820ebb8369bb65afbb17.png', subtitle: 'Imaginar, compartir y jugar', description: 'Una cocina infantil con accesorios grandes y seguros para inventar recetas, roles y pequeñas historias entre amigos.' },
+    'Pelotero Sensorial': { color: 'blue', image: 'assets/images/file_0000000098b8820ebe0ce69040ebea52.png', subtitle: 'Movimiento, color y descubrimiento', description: 'Un espacio blando con pelotas de distintos tonos y elementos suaves para estimular movimiento, coordinación y juego libre.' },
     'Bloques Gigantes': { color: 'yellow', subtitle: 'Construir también es jugar', description: 'Piezas blandas de gran tamaño para apilar, crear recorridos y construir formas sin límites y sin golpes duros.' },
     'Circuito de Equilibrio': { color: 'lavender', subtitle: 'Una aventura a su medida', description: 'Rampas, pasos bajos y superficies acolchonadas para recorrer, trepar y desafiar el equilibrio de forma divertida.' }
   };
@@ -38,7 +38,7 @@
         <div class="game-card__preview">
           <span class="game-card__badge">${shieldIcon()}Juego seguro</span>
           <span class="game-card__arrow" aria-hidden="true">›</span>
-          <span class="game-card__image-placeholder" aria-hidden="true">${imageIcon()}</span>
+          ${meta.image ? '' : `<span class="game-card__image-placeholder" aria-hidden="true">${imageIcon()}</span>`}
         </div>
         <div class="game-card__body">
           <div class="game-card__copy"><h2>${reservation.name} <span>${meta.subtitle}</span></h2><p>${meta.description}</p></div>
@@ -47,6 +47,15 @@
             <a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a>
           </div>
         </div>`;
+
+      if (meta.image) {
+        const preview = card.querySelector('.game-card__preview');
+        preview.style.backgroundImage = `url("${meta.image}")`;
+        preview.style.backgroundSize = 'cover';
+        preview.style.backgroundPosition = 'center';
+        preview.style.backgroundRepeat = 'no-repeat';
+      }
+
       card.querySelector('[data-remove-reservation]').addEventListener('click', () => {
         window.ZekereReservations.removeReservation(reservation.name, reservation.date);
         render();
