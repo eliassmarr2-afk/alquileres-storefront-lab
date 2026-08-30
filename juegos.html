@@ -16,49 +16,76 @@
 <body class="home-page games-page">
   <header class="google-header" aria-label="Encabezado principal">
     <a class="zekere-symbol" href="index.html" aria-label="Zekere Juegos, inicio"><span>Z</span></a>
-    <button class="search-pill" type="button" aria-label="Buscar juegos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><span>Buscar juegos</span></button>
+
+    <button class="search-pill" type="button" aria-label="Buscar juegos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="m20 20-4-4"></path>
+      </svg>
+      <span>Buscar juegos</span>
+    </button>
+
     <div class="header-tools" aria-label="Acciones rápidas">
-      <button class="icon-button" type="button" aria-label="Cambiar apariencia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5 8.6 8.6 0 1 0 20.5 14.3Z"></path></svg></button>
-      <a class="icon-button" href="alquiler.html" aria-label="Ver reservas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16"></path></svg></a>
+      <button class="icon-button" type="button" aria-label="Cambiar apariencia">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5 8.6 8.6 0 1 0 20.5 14.3Z"></path>
+        </svg>
+      </button>
+      <a class="icon-button reservation-anchor" href="alquiler.html" aria-label="Ver reservas" data-reservation-anchor>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect>
+          <path d="M8 3v5M16 3v5M4 10h16"></path>
+        </svg>
+      </a>
+      <div class="reservation-tooltip" role="status" aria-live="polite" data-reservation-tooltip hidden>
+        Seleccioná la fecha del evento para reservar
+      </div>
     </div>
   </header>
 
   <main class="games-main">
     <section class="games-intro" aria-labelledby="games-title">
-      <div class="pink-hook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path></svg><span>Diversión que se recuerda</span></div>
+      <div class="pink-hook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path>
+        </svg>
+        <span>Diversión que se recuerda</span>
+      </div>
       <h1 id="games-title">Juegos para cada forma de <span>divertirse.</span></h1>
       <p>Elegí una experiencia, sumala a tu reserva y armá un cumple a la medida de los chicos.</p>
     </section>
 
     <section class="games-grid" aria-label="Juegos disponibles">
       <article class="game-card game-card--pink" data-card-link="alquiler.html#experiencia" role="link" tabindex="0" aria-label="Ver detalles de Plaza Montessori">
-        <div class="game-card__top"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span></div>
-        <div class="game-card__copy"><h2>Plaza Montessori <span>| Diversión y entretenimiento asegurado</span></h2><p>La plaza Montessori viene con una serie de juegos didácticos y entretenimiento seguro para los niños.</p></div>
-        <div class="game-card__actions"><a class="game-button game-button--add" href="alquiler.html?add=plaza-montessori">Añadir a la reserva</a><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver detalles</a></div>
+        <div class="game-card__preview">
+          <span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span>
+          <span class="game-card__arrow" aria-hidden="true">›</span>
+          <span class="game-card__image-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="m5 17 4-4 3 3 2-2 5 3"></path></svg></span>
+        </div>
+        <div class="game-card__body">
+          <div class="game-card__copy"><h2>Plaza Montessori <span>Diversión y entretenimiento asegurado</span></h2><p>La plaza Montessori viene con una serie de juegos didácticos y entretenimiento seguro para los niños.</p></div>
+          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
+        </div>
       </article>
 
       <article class="game-card game-card--aqua" data-card-link="alquiler.html#experiencia" role="link" tabindex="0" aria-label="Ver detalles de Mini Cocina Creativa">
-        <div class="game-card__top"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span></div>
-        <div class="game-card__copy"><h2>Mini Cocina Creativa <span>| Imaginar, compartir y jugar</span></h2><p>Una cocina infantil con accesorios grandes y seguros para inventar recetas, roles y pequeñas historias entre amigos.</p></div>
-        <div class="game-card__actions"><a class="game-button game-button--add" href="alquiler.html?add=mini-cocina">Añadir a la reserva</a><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver detalles</a></div>
+        <div class="game-card__preview"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span><span class="game-card__image-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="m5 17 4-4 3 3 2-2 5 3"></path></svg></span></div>
+        <div class="game-card__body"><div class="game-card__copy"><h2>Mini Cocina Creativa <span>Imaginar, compartir y jugar</span></h2><p>Una cocina infantil con accesorios grandes y seguros para inventar recetas, roles y pequeñas historias entre amigos.</p></div><div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div></div>
       </article>
 
       <article class="game-card game-card--blue" data-card-link="alquiler.html#experiencia" role="link" tabindex="0" aria-label="Ver detalles de Pelotero Sensorial">
-        <div class="game-card__top"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span></div>
-        <div class="game-card__copy"><h2>Pelotero Sensorial <span>| Movimiento, color y descubrimiento</span></h2><p>Un espacio blando con pelotas de distintos tonos y elementos suaves para estimular movimiento, coordinación y juego libre.</p></div>
-        <div class="game-card__actions"><a class="game-button game-button--add" href="alquiler.html?add=pelotero-sensorial">Añadir a la reserva</a><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver detalles</a></div>
+        <div class="game-card__preview"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span><span class="game-card__image-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="m5 17 4-4 3 3 2-2 5 3"></path></svg></span></div>
+        <div class="game-card__body"><div class="game-card__copy"><h2>Pelotero Sensorial <span>Movimiento, color y descubrimiento</span></h2><p>Un espacio blando con pelotas de distintos tonos y elementos suaves para estimular movimiento, coordinación y juego libre.</p></div><div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div></div>
       </article>
 
       <article class="game-card game-card--yellow" data-card-link="alquiler.html#experiencia" role="link" tabindex="0" aria-label="Ver detalles de Bloques Gigantes">
-        <div class="game-card__top"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span></div>
-        <div class="game-card__copy"><h2>Bloques Gigantes <span>| Construir también es jugar</span></h2><p>Piezas blandas de gran tamaño para apilar, crear recorridos y construir formas sin límites y sin golpes duros.</p></div>
-        <div class="game-card__actions"><a class="game-button game-button--add" href="alquiler.html?add=bloques-gigantes">Añadir a la reserva</a><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver detalles</a></div>
+        <div class="game-card__preview"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span><span class="game-card__image-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="m5 17 4-4 3 3 2-2 5 3"></path></svg></span></div>
+        <div class="game-card__body"><div class="game-card__copy"><h2>Bloques Gigantes <span>Construir también es jugar</span></h2><p>Piezas blandas de gran tamaño para apilar, crear recorridos y construir formas sin límites y sin golpes duros.</p></div><div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div></div>
       </article>
 
       <article class="game-card game-card--lavender" data-card-link="alquiler.html#experiencia" role="link" tabindex="0" aria-label="Ver detalles de Circuito de Equilibrio">
-        <div class="game-card__top"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span></div>
-        <div class="game-card__copy"><h2>Circuito de Equilibrio <span>| Una aventura a su medida</span></h2><p>Rampas, pasos bajos y superficies acolchonadas para recorrer, trepar y desafiar el equilibrio de forma divertida.</p></div>
-        <div class="game-card__actions"><a class="game-button game-button--add" href="alquiler.html?add=circuito-equilibrio">Añadir a la reserva</a><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver detalles</a></div>
+        <div class="game-card__preview"><span class="game-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 19 6v5c0 4.8-3 8-7 10-4-2-7-5.2-7-10V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>Juego seguro</span><span class="game-card__arrow" aria-hidden="true">›</span><span class="game-card__image-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="m5 17 4-4 3 3 2-2 5 3"></path></svg></span></div>
+        <div class="game-card__body"><div class="game-card__copy"><h2>Circuito de Equilibrio <span>Una aventura a su medida</span></h2><p>Rampas, pasos bajos y superficies acolchonadas para recorrer, trepar y desafiar el equilibrio de forma divertida.</p></div><div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div></div>
       </article>
     </section>
   </main>
@@ -70,20 +97,6 @@
     <a class="bottom-nav__item is-active" href="juegos.html" aria-current="page"><span class="bottom-nav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9.5L12 5l8 4.5V19"></path><path d="M8 19v-5h8v5M9 10h6"></path></svg></span><span>Juegos</span></a>
   </nav>
 
-  <script>
-    document.querySelectorAll('[data-card-link]').forEach((card) => {
-      const openCard = () => window.location.href = card.dataset.cardLink;
-      card.addEventListener('click', (event) => {
-        if (event.target.closest('a, button')) return;
-        openCard();
-      });
-      card.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          openCard();
-        }
-      });
-    });
-  </script>
+  <script src="assets/js/juegos.js"></script>
 </body>
 </html>
