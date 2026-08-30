@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/home.css">
   <link rel="stylesheet" href="assets/css/juegos.css">
+  <link rel="stylesheet" href="assets/css/reservations.css">
 </head>
 <body class="home-page games-page">
   <header class="google-header" aria-label="Encabezado principal">
@@ -31,15 +32,12 @@
           <path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5 8.6 8.6 0 1 0 20.5 14.3Z"></path>
         </svg>
       </button>
-      <a class="icon-button reservation-anchor" href="alquiler.html" aria-label="Ver reservas" data-reservation-anchor>
+      <button class="icon-button zekere-reservation-trigger" type="button" aria-label="Seleccionar fecha del evento" data-reservation-calendar-trigger>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect>
           <path d="M8 3v5M16 3v5M4 10h16"></path>
         </svg>
-      </a>
-      <div class="reservation-tooltip" role="status" aria-live="polite" data-reservation-tooltip hidden>
-        Seleccioná la fecha del evento para reservar
-      </div>
+      </button>
     </div>
   </header>
 
@@ -73,7 +71,7 @@
             <p>La plaza Montessori viene con una serie de juegos didácticos y entretenimiento seguro para los niños.</p>
           </div>
           <div class="game-card__actions">
-            <button class="game-button game-button--add" type="button" data-add-reservation>
+            <button class="game-button game-button--add" type="button" data-add-reservation data-reservation-item="Plaza Montessori">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>
               Añadir a mi reserva
             </button>
@@ -90,7 +88,7 @@
         </div>
         <div class="game-card__body">
           <div class="game-card__copy"><h2>Mini Cocina Creativa <span>Imaginar, compartir y jugar</span></h2><p>Una cocina infantil con accesorios grandes y seguros para inventar recetas, roles y pequeñas historias entre amigos.</p></div>
-          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
+          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation data-reservation-item="Mini Cocina Creativa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
         </div>
       </article>
 
@@ -102,7 +100,7 @@
         </div>
         <div class="game-card__body">
           <div class="game-card__copy"><h2>Pelotero Sensorial <span>Movimiento, color y descubrimiento</span></h2><p>Un espacio blando con pelotas de distintos tonos y elementos suaves para estimular movimiento, coordinación y juego libre.</p></div>
-          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
+          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation data-reservation-item="Pelotero Sensorial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
         </div>
       </article>
 
@@ -114,7 +112,7 @@
         </div>
         <div class="game-card__body">
           <div class="game-card__copy"><h2>Bloques Gigantes <span>Construir también es jugar</span></h2><p>Piezas blandas de gran tamaño para apilar, crear recorridos y construir formas sin límites y sin golpes duros.</p></div>
-          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
+          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation data-reservation-item="Bloques Gigantes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
         </div>
       </article>
 
@@ -126,7 +124,7 @@
         </div>
         <div class="game-card__body">
           <div class="game-card__copy"><h2>Circuito de Equilibrio <span>Una aventura a su medida</span></h2><p>Rampas, pasos bajos y superficies acolchonadas para recorrer, trepar y desafiar el equilibrio de forma divertida.</p></div>
-          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
+          <div class="game-card__actions"><button class="game-button game-button--add" type="button" data-add-reservation data-reservation-item="Circuito de Equilibrio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="15" rx="2.5"></rect><path d="M8 3v5M16 3v5M4 10h16M12 13v5M9.5 15.5h5"></path></svg>Añadir a mi reserva</button><a class="game-button game-button--details" href="alquiler.html#experiencia">Ver</a></div>
         </div>
       </article>
     </section>
@@ -139,6 +137,7 @@
     <a class="bottom-nav__item is-active" href="juegos.html" aria-current="page"><span class="bottom-nav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9.5L12 5l8 4.5V19"></path><path d="M8 19v-5h8v5M9 10h6"></path></svg></span><span>Juegos</span></a>
   </nav>
 
+  <script src="assets/js/reservations.js"></script>
   <script src="assets/js/juegos.js"></script>
 </body>
 </html>
