@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Alquileres · Storefront Lab</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/product.css">
+</head>
+<body>
+  <div class="announcement">Reservas simples · Fechas claras · Experiencias para celebrar</div>
+
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Inicio">
+      <span class="brand__mark">M</span>
+      <span class="brand__text">Momentos</span>
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="#experiencia">Cómo funciona</a>
+      <a href="#complementos">Complementos</a>
+      <button class="header-action" type="button" data-consult>Consultar</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="product-layout" id="experiencia">
+      <div class="product-gallery" aria-label="Galería del producto">
+        <div class="product-gallery__track" data-gallery-track>
+          <article class="media" data-gallery-slide>
+            <div class="media__scene media__scene--sand" role="img" aria-label="Vista conceptual de una plaza blanda beige">
+              <div class="scene-arch"></div>
+              <div class="scene-block scene-block--one"></div>
+              <div class="scene-block scene-block--two"></div>
+              <div class="scene-ball scene-ball--one"></div>
+              <div class="scene-ball scene-ball--two"></div>
+              <span class="media__caption">Plaza Blanda Arena</span>
+            </div>
+          </article>
+
+          <article class="media" data-gallery-slide>
+            <div class="media__scene media__scene--cream" role="img" aria-label="Detalle conceptual del set completo">
+              <div class="scene-step"></div>
+              <div class="scene-cylinder"></div>
+              <span class="media__caption">Set completo</span>
+            </div>
+          </article>
+
+          <article class="media" data-gallery-slide>
+            <div class="media__scene media__scene--sage" role="img" aria-label="Detalle conceptual del montaje">
+              <div class="scene-mat"></div>
+              <div class="scene-ball scene-ball--three"></div>
+              <div class="scene-ball scene-ball--four"></div>
+              <span class="media__caption">Montaje incluido</span>
+            </div>
+          </article>
+
+          <article class="media" data-gallery-slide>
+            <div class="media__scene media__scene--blue" role="img" aria-label="Vista conceptual lateral de la plaza blanda">
+              <div class="scene-arch"></div>
+              <div class="scene-block scene-block--one"></div>
+              <div class="scene-ball scene-ball--one"></div>
+              <span class="media__caption">Vista lateral</span>
+            </div>
+          </article>
+
+          <article class="media" data-gallery-slide>
+            <div class="media__scene media__scene--coral" role="img" aria-label="Vista conceptual del espacio preparado para un cumpleaños">
+              <div class="scene-step"></div>
+              <div class="scene-cylinder"></div>
+              <div class="scene-ball scene-ball--two"></div>
+              <span class="media__caption">Lista para celebrar</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="gallery-thumbs" aria-label="Elegir imagen">
+          <button class="gallery-thumb is-active gallery-thumb--sand" type="button" data-gallery-thumb="0" aria-label="Ver imagen 1"></button>
+          <button class="gallery-thumb gallery-thumb--cream" type="button" data-gallery-thumb="1" aria-label="Ver imagen 2"></button>
+          <button class="gallery-thumb gallery-thumb--sage" type="button" data-gallery-thumb="2" aria-label="Ver imagen 3"></button>
+          <button class="gallery-thumb gallery-thumb--blue" type="button" data-gallery-thumb="3" aria-label="Ver imagen 4"></button>
+          <button class="gallery-thumb gallery-thumb--coral" type="button" data-gallery-thumb="4" aria-label="Ver imagen 5"></button>
+        </div>
+      </div>
+
+      <div class="product-panel">
+        <div class="product-intro">
+          <a class="eyebrow-link" href="#">Alquileres / Plaza blanda</a>
+          <div class="product-badge">IDEAL DE 1 A 4 AÑOS</div>
+          <h1>Plaza Blanda Arena</h1>
+          <p class="product-copy">Un espacio de juego seguro, divertido y listo para transformar el cumpleaños sin complicaciones.</p>
+
+          <div class="price-row">
+            <div>
+              <span class="price-label">Desde</span>
+              <strong class="product-price">$48.000</strong>
+            </div>
+            <span class="price-unit">por jornada</span>
+          </div>
+
+          <div class="micro-benefits" aria-label="Beneficios incluidos">
+            <span class="benefit-chip benefit-chip--blue">Montaje coordinado</span>
+            <span class="benefit-chip benefit-chip--red">Limpieza incluida</span>
+            <span class="benefit-chip benefit-chip--yellow">Reserva por fecha</span>
+          </div>
+        </div>
+
+        <section class="booking-card" aria-labelledby="booking-title">
+          <div class="booking-heading">
+            <div>
+              <span class="step-label">PASO 1</span>
+              <h2 id="booking-title">Reservá la fecha</h2>
+            </div>
+          </div>
+
+          <button class="date-trigger" type="button" data-calendar-toggle aria-expanded="false" aria-controls="birthday-calendar">
+            <span class="date-trigger__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                <path d="M16 3v4M8 3v4M3 10h18"></path>
+              </svg>
+            </span>
+            <span class="date-trigger__copy">
+              <strong>Seleccionar fecha de cumpleaños</strong>
+              <small data-date-trigger-copy>Elegí una fecha disponible</small>
+            </span>
+            <span class="date-trigger__chevron" aria-hidden="true">›</span>
+          </button>
+
+          <div class="calendar-shell" id="birthday-calendar" data-calendar-shell hidden>
+            <div class="calendar" data-calendar>
+              <div class="calendar__topbar">
+                <button class="calendar__nav" type="button" data-prev-month aria-label="Mes anterior">←</button>
+                <strong data-month-label></strong>
+                <button class="calendar__nav" type="button" data-next-month aria-label="Mes siguiente">→</button>
+              </div>
+              <div class="calendar__weekdays" aria-hidden="true">
+                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+              </div>
+              <div class="calendar__grid" data-calendar-grid></div>
+              <div class="calendar__legend">
+                <span><i class="dot dot--available"></i>Disponible</span>
+                <span><i class="dot dot--unavailable"></i>No disponible</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="availability" data-availability aria-live="polite">
+            <span class="availability__dot"></span>
+            <span>Seleccioná una fecha para verificar disponibilidad.</span>
+          </div>
+
+          <div class="booking-summary">
+            <div class="summary-heading">
+              <div>
+                <span class="step-label step-label--red">PASO 2</span>
+                <h3>Tu alquiler</h3>
+              </div>
+              <span class="summary-status" data-summary-status>Pendiente</span>
+            </div>
+
+            <div class="summary-line">
+              <span>Plaza Blanda Arena</span>
+              <strong>$48.000</strong>
+            </div>
+            <div class="summary-line summary-line--muted">
+              <span data-selected-date>Fecha por seleccionar</span>
+              <span>1 jornada</span>
+            </div>
+            <div class="summary-line" data-second-date-row hidden>
+              <span>Segunda fecha · 20% OFF</span>
+              <strong>$38.400</strong>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-total">
+              <span>Total estimado</span>
+              <strong data-total>$48.000</strong>
+            </div>
+          </div>
+
+          <div class="booking-actions">
+            <button class="button button--primary" type="button" data-rent disabled>Alquilar ahora</button>
+            <button class="button button--secondary" type="button" data-consult>Consultar antes</button>
+          </div>
+          <p class="booking-note">Todavía no se realiza ningún cobro. Esta versión es una demo visual del flujo.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="offer-section">
+      <article class="second-date-offer">
+        <div class="offer-kicker">OFERTA POR ANTICIPACIÓN</div>
+        <div class="offer-copy">
+          <div>
+            <h2>¿Tenés otro cumple cerca?</h2>
+            <p>Reservá una segunda fecha ahora y obtené <strong>20% OFF</strong> en ese alquiler.</p>
+          </div>
+          <button class="button button--light" type="button" data-second-date disabled>Elegir otra fecha</button>
+        </div>
+        <div class="second-date-selection" data-second-date-selection hidden>
+          <span data-second-date-copy></span>
+          <button type="button" data-remove-second>Quitar</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="addons-section" id="complementos">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">COMPLETÁ EL ESPACIO</span>
+          <h2>Sumale al cumple</h2>
+        </div>
+        <p>Complementos pensados para la misma fecha. Agregá solo lo que realmente suma.</p>
+      </div>
+
+      <div class="addons-grid">
+        <article class="addon-card" data-addon data-price="14000" data-name="Mesitas infantiles">
+          <div class="addon-visual addon-visual--tables"><span></span><span></span><span></span></div>
+          <div class="addon-body"><div><h3>Mesitas infantiles</h3><p>Set bajo para merienda y actividades.</p></div><div class="addon-footer"><strong>+$14.000</strong><button type="button" data-addon-toggle>Agregar</button></div></div>
+        </article>
+        <article class="addon-card" data-addon data-price="26000" data-name="Mini inflable">
+          <div class="addon-visual addon-visual--inflatable"><span></span></div>
+          <div class="addon-body"><div><h3>Mini inflable</h3><p>Formato compacto para espacios chicos.</p></div><div class="addon-footer"><strong>+$26.000</strong><button type="button" data-addon-toggle>Agregar</button></div></div>
+        </article>
+        <article class="addon-card" data-addon data-price="18000" data-name="Arco decorativo">
+          <div class="addon-visual addon-visual--arch"><span></span></div>
+          <div class="addon-body"><div><h3>Arco decorativo</h3><p>Fondo neutro para torta y fotos.</p></div><div class="addon-footer"><strong>+$18.000</strong><button type="button" data-addon-toggle>Agregar</button></div></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-sticky" data-mobile-sticky><div><span>Total estimado</span><strong data-mobile-total>$48.000</strong></div><button class="button button--primary" type="button" data-mobile-rent disabled>Alquilar ahora</button></div>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <script src="assets/js/product.js"></script>
+</body>
+</html>
