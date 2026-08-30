@@ -16,4 +16,8 @@
       }
     });
   });
+
+  document.querySelectorAll('a[href="index.html#zonas"]').forEach((link) => {
+    link.href = 'zonas.html';
+  });
 })();
