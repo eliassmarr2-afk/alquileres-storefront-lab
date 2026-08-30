@@ -64,6 +64,13 @@
     } catch (_) {}
   }
 
+  function clearSelectedDate() {
+    state.selectedDate = null;
+    try {
+      localStorage.removeItem(DATE_KEY);
+    } catch (_) {}
+  }
+
   function readReservations() {
     try {
       const parsed = JSON.parse(localStorage.getItem(RESERVATIONS_KEY) || '[]');
@@ -75,7 +82,8 @@
 
   function writeReservations(items) {
     try {
-      localStorage.setItem(RESERVATIONS_KEY, JSON.stringify(items));
+      if (items.length) localStorage.setItem(RESERVATIONS_KEY, JSON.stringify(items));
+      else localStorage.removeItem(RESERVATIONS_KEY);
     } catch (_) {}
   }
 
@@ -89,7 +97,26 @@
     items.push({ name, date: dateISO });
     writeReservations(items);
     renderReservationBanner();
+    window.dispatchEvent(new CustomEvent('zekere:reservations-changed', { detail: { items } }));
     return true;
+  }
+
+  function removeReservation(name, dateISO) {
+    const current = readReservations();
+    const next = current.filter((item) => !(item && item.name === name && (!dateISO || item.date === dateISO)));
+    if (next.length === current.length) return false;
+
+    writeReservations(next);
+    if (!next.length) clearSelectedDate();
+    renderReservationBanner();
+    window.dispatchEvent(new CustomEvent('zekere:reservations-changed', { detail: { items: next } }));
+    return true;
+  }
+
+  function formatNormalizedDate(date) {
+    if (!date) return '';
+    const month = new Intl.DateTimeFormat('es-AR', { month: 'long' }).format(date);
+    return `${date.getDate()} de ${month} del ${date.getFullYear()}`;
   }
 
   function ensureReservationBanner() {
@@ -98,7 +125,7 @@
 
     banner = document.createElement('a');
     banner.className = 'zekere-reservation-banner';
-    banner.href = 'alquiler.html#experiencia';
+    banner.href = 'reservas.html';
     banner.setAttribute('data-zekere-reservation-banner', '');
     banner.hidden = true;
     banner.innerHTML = `
@@ -108,10 +135,16 @@
           <path d="M8 3v5M16 3v5M4 10h16"></path>
         </svg>
       </span>
-      <span class="zekere-reservation-banner__copy" data-zekere-reservation-copy></span>
+      <span class="zekere-reservation-banner__copy">
+        <strong data-zekere-reservation-count></strong>
+        <small data-zekere-reservation-date></small>
+      </span>
       <span class="zekere-reservation-banner__arrow" aria-hidden="true">›</span>
     `;
-    document.body.insertBefore(banner, document.body.firstChild);
+
+    const header = document.querySelector('.google-header, .site-header');
+    if (header) header.insertAdjacentElement('afterend', banner);
+    else document.body.insertBefore(banner, document.body.firstChild);
     return banner;
   }
 
@@ -122,10 +155,11 @@
     banner.hidden = count === 0;
     if (!count) return;
 
-    const copy = banner.querySelector('[data-zekere-reservation-copy]');
-    copy.textContent = count === 1
-      ? 'Tenés 1 reserva lista para adquirir'
-      : `Tenés ${count} reservas listas para adquirir`;
+    const storedDate = fromISODate(reservations[0]?.date) || readSelectedDate();
+    const countNode = banner.querySelector('[data-zekere-reservation-count]');
+    const dateNode = banner.querySelector('[data-zekere-reservation-date]');
+    countNode.textContent = count === 1 ? 'Tenés 1 reserva activa' : `Tenés ${count} reservas activas`;
+    dateNode.textContent = storedDate ? `para el ${formatNormalizedDate(storedDate)}` : '';
   }
 
   function ensureTooltip() {
@@ -369,12 +403,18 @@
     openCalendar: openModal,
     getDate: () => readSelectedDate(),
     getReservations: () => readReservations(),
+    removeReservation,
+    formatDate: (value) => {
+      const parsed = value instanceof Date ? value : fromISODate(String(value));
+      return parsed ? formatNormalizedDate(parsed) : '';
+    },
     setDate: (date) => {
       const parsed = date instanceof Date ? date : fromISODate(String(date));
       if (!parsed) return;
       saveSelectedDate(parsed);
       renderReservationBanner();
-    }
+    },
+    refreshBanner: renderReservationBanner
   };
 
   ensureModal();
