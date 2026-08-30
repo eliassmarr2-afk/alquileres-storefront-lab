@@ -64,25 +64,25 @@
 
 .zekere-reservation-banner {
   position: sticky;
-  top: 0;
+  top: 12px;
   z-index: 100;
   width: min(calc(100% - 24px), 760px);
-  min-height: 54px;
-  margin: 8px auto 0;
-  padding: 8px 12px;
+  min-height: 64px;
+  margin: 12px auto 10px;
+  padding: 9px 13px;
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) 24px;
+  grid-template-columns: 40px minmax(0, 1fr) 24px;
   align-items: center;
-  gap: 10px;
-  border-radius: 26px;
+  gap: 11px;
+  border-radius: 28px;
   background: #e7e3ff;
   color: #34314d;
   text-decoration: none;
 }
 
 .zekere-reservation-banner__icon {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
   border-radius: 14px;
@@ -97,12 +97,29 @@
 
 .zekere-reservation-banner__copy {
   min-width: 0;
+  display: grid;
+  gap: 2px;
+  line-height: 1.15;
+}
+
+.zekere-reservation-banner__copy strong,
+.zekere-reservation-banner__copy small {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.zekere-reservation-banner__copy strong {
   font-size: 13px;
-  font-weight: 650;
+  font-weight: 680;
   letter-spacing: -0.012em;
+}
+
+.zekere-reservation-banner__copy small {
+  color: #68647c;
+  font-size: 11px;
+  font-weight: 520;
 }
 
 .zekere-reservation-banner__arrow {
@@ -293,73 +310,29 @@
   border-radius: 50%;
 }
 
-.zekere-calendar__dot--available {
-  background: #18a957;
-}
-
-.zekere-calendar__dot--unavailable {
-  background: #c8c9cb;
-}
-
-body.has-zekere-modal {
-  overflow: hidden;
-}
+.zekere-calendar__dot--available { background: #18a957; }
+.zekere-calendar__dot--unavailable { background: #c8c9cb; }
+body.has-zekere-modal { overflow: hidden; }
 
 @media (max-width: 520px) {
   .zekere-reservation-banner {
+    top: 10px;
     width: calc(100% - 20px);
-    min-height: 50px;
-    margin-top: 6px;
-    padding: 7px 10px;
-    grid-template-columns: 36px minmax(0, 1fr) 20px;
-    border-radius: 24px;
+    min-height: 60px;
+    margin: 10px auto 9px;
+    padding: 8px 10px;
+    grid-template-columns: 38px minmax(0, 1fr) 20px;
+    border-radius: 25px;
   }
-
-  .zekere-reservation-banner__icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 13px;
-  }
-
-  .zekere-reservation-banner__copy {
-    font-size: 12px;
-  }
-
-  .zekere-date-modal {
-    padding: 10px;
-    align-items: end;
-  }
-
-  .zekere-date-modal__panel {
-    max-height: 92vh;
-    border-radius: 30px 30px 24px 24px;
-  }
-
-  .zekere-date-modal__header {
-    padding: 20px 20px 16px;
-  }
-
-  .zekere-date-modal__title {
-    font-size: 22px;
-  }
-
-  .zekere-calendar {
-    margin: 0 8px 8px;
-    padding: 14px;
-    border-radius: 26px;
-  }
-
-  .zekere-calendar__topbar strong {
-    font-size: 16px;
-  }
-
-  .zekere-calendar-day {
-    min-height: 42px;
-    font-size: 12px;
-  }
-
-  .zekere-reservation-tooltip {
-    right: -2px;
-    width: min(270px, calc(100vw - 24px));
-  }
+  .zekere-reservation-banner__icon { width: 38px; height: 38px; border-radius: 13px; }
+  .zekere-reservation-banner__copy strong { font-size: 12px; }
+  .zekere-reservation-banner__copy small { font-size: 10.5px; }
+  .zekere-date-modal { padding: 10px; align-items: end; }
+  .zekere-date-modal__panel { max-height: 92vh; border-radius: 30px 30px 24px 24px; }
+  .zekere-date-modal__header { padding: 20px 20px 16px; }
+  .zekere-date-modal__title { font-size: 22px; }
+  .zekere-calendar { margin: 0 8px 8px; padding: 14px; border-radius: 26px; }
+  .zekere-calendar__topbar strong { font-size: 16px; }
+  .zekere-calendar-day { min-height: 42px; font-size: 12px; }
+  .zekere-reservation-tooltip { right: -2px; width: min(270px, calc(100vw - 24px)); }
 }
